@@ -34,7 +34,7 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/services"
+                to="/services"c
                 className={({ isActive }) =>
                   `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
