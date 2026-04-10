@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function ProviderSection() {
 
-
 const navigate = useNavigate();
 
   return (
@@ -48,7 +47,6 @@ const navigate = useNavigate();
 
                 <PrimaryBtn onclick={() => {navigate("/provider")}} btn="Join as a Provider" className="mt-5  ml-3  bg-[#1E4ED8]"/>
             </div>
-
 
             </div>
         </div>

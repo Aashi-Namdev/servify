@@ -2,8 +2,7 @@ import React from "react";
 import { NavLink,Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryBtn from "./PrimaryBtn";
 import SecondaryBtn from "./SecondaryBtn";
-import { useState } from "react";
-import { set } from "react-hook-form";
+import logo from "../assets/other/logo.png";
 
 function Header() {
   const navigate = useNavigate();
@@ -16,8 +15,8 @@ function Header() {
 
   return (
       <div className="absolute top-0 left-0  z-20 px-15 py-5  w-full flex items-center justify-between">
-        <Link className="font-bold text-2xl text-blue-600 brightness-150" to="/">
-          SERVIFY
+        <Link className="brightness-150" to="/">
+          <img src={logo} alt="Logo" className="w-44" />
         </Link>
 
         <div className=" text-white">
@@ -34,7 +33,7 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/services"c
+                to="/services"
                 className={({ isActive }) =>
                   `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }

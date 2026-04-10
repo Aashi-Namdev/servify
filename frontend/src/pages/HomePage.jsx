@@ -3,7 +3,7 @@ import ServiceSection from '../components/ServiceSection'
 import HowItWorks from '../components/HowItWorks'
 import HeroSection from '../components/HeroSection'
 import ProviderSection from '../components/ProviderSection'
-import TestimonialSection from '../components/TestinomialSection'
+import TestimonialSection from '../components/TestimonialSection'
 
 function HomePage() {
   return (

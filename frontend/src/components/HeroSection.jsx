@@ -16,9 +16,9 @@ function HeroSection() {
           alt=""
           className="absolute h-full w-full object-cover inset-0 brightness-75 contrast-110"
         />
-        {/* Overlay */}
+      
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/30"></div>
-        {/* Content */}
+  
         <div className="relative z-10 flex  items-center justify-start h-full px-10">
           <div className="text-white max-w-md">
             <h1 className="text-5xl font-bold">
@@ -64,3 +64,4 @@ function HeroSection() {
 }
 
 export default HeroSection;
+

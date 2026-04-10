@@ -1,11 +1,15 @@
 import React from "react";
 import { Star } from "lucide-react";
-import { User2,User } from "lucide-react";
+import { User2, User } from "lucide-react";
 
-function TestimonialCard({ testimonial }) {
+function TestimonialCard({ testimonial, isActive }) {
   const { name, role, content, review } = testimonial;
   return (
-    <div className="bg-[#0F2F66] rounded-lg p-5 w-96 text-gray-300 shadow-lg shrink-0 duration-300 snap-center">
+    <div 
+      className={`bg-[#0F2F66] min-h-44 flex flex-col justify-between rounded-lg p-5 max-w-96 text-gray-300 shadow-lg shrink-0 duration-300 snap-center transition-transform ${
+        isActive ? "scale-110" : "scale-95 hover:scale-100"
+      }`}
+    >
       <div className="text-sm mb-3">{content}</div>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
@@ -18,13 +22,13 @@ function TestimonialCard({ testimonial }) {
           </div>
         </div>
         <div className="flex items-center border-gray-300 border rounded-full px-2 py-1">
-          <Star className="w-5 h-5 text-amber-400 fill-current" />
-          <Star className="w-5 h-5 text-amber-400 fill-current" />
-          <Star className="w-5 h-5 text-amber-400 fill-current" />
-          <Star className="w-5 h-5 text-amber-400 fill-current" />
-          <Star className="w-5 h-5 text-amber-400 fill-current" />
+          {Array.from({ length: 5 }).map((_, index) => (
+            <Star 
+              key={index} 
+              className={`w-5 h-5 ${index < review ? "text-amber-400 fill-current" : "text-gray-400"}`} 
+            />
+          ))}
         </div>
-
       </div>
     </div>
   );

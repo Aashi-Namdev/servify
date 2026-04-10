@@ -5,7 +5,7 @@ function WorkingCard({ icon, title, description, step }) {
     <div className="group relative bg-[#0F2F66] rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 p-6 text-center w-64">
 
       {step && (
-        <span className="absolute top-3 left-4 text-blue-600 text-xs font-bold">
+        <span className="absolute top-3 left-4 text-gray-300 text-xs font-bold">
           {step}
         </span>
       )}
@@ -29,3 +29,4 @@ function WorkingCard({ icon, title, description, step }) {
 }
 
 export default WorkingCard;
+
