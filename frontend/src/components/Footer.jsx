@@ -31,7 +31,7 @@ function Footer() {
             <img
               src={logo}
               alt="Servify Logo"
-              className="w-48 brightness-150 mb-4"
+              className="w-48 brightness-150 mb-4 cursor-auto"
             />
           </Link>
           <p className="text-sm leading-relaxed text-gray-400 mb-6">
@@ -80,6 +80,7 @@ function Footer() {
               <li>
                 <Link
                   to="/about"
+                  onClick={()=>window.scrollTo({top:0, behavior:"instant"})}
                   className="hover:text-white transition-colors duration-200"
                 >
                   About Us
@@ -88,6 +89,7 @@ function Footer() {
               <li>
                 <Link
                   to="/contact"
+                  onClick={() => window.scrollTo({ top: 0, behavior:"instant"})}
                   className="hover:text-white transition-colors duration-200"
                 >
                   Contact Us
@@ -118,6 +120,7 @@ function Footer() {
               <li>
                 <Link
                   to="/services"
+                  onClick={() => window.scrollTo({ top: 0, behavior:"instant" })} 
                   className="hover:text-white transition-colors duration-200"
                 >
                   All Services
@@ -184,7 +187,7 @@ function Footer() {
               <span>
                 123 Main Street,
                 <br />
-                Prayagraj, India 211001
+                Prayagraj,Uttar Pradesh, India 211001
               </span>
             </li>
           </ul>

@@ -1,8 +1,12 @@
+
 import React from "react";
 import PrimaryBtn from "./PrimaryBtn";
+import SecondaryBtn from "./SecondaryBtn";
+import { MapPin } from "lucide-react";
 
 export default function ServiceCard({
-  title,
+  providerName,
+  service,
   image,
   rating,
   location,
@@ -11,11 +15,10 @@ export default function ServiceCard({
 }) {
   return (
     <div className="group w-72 shrink-0 snap-start bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 overflow-hidden">
-      
       <div className="relative">
         <img
           src={image}
-          alt={title}
+          alt={providerName}
           className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
         />
 
@@ -27,10 +30,10 @@ export default function ServiceCard({
       </div>
 
       <div className="p-4 space-y-2">
-        
+        {/* Provider Name + Rating */}
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold text-gray-800">
-            {title}
+            {providerName}
           </h3>
 
           <span className="flex items-center gap-1 text-sm font-medium text-yellow-500">
@@ -38,17 +41,31 @@ export default function ServiceCard({
           </span>
         </div>
 
+        {/* Service Name */}
+        <p className="text-sm text-blue-600 font-medium">{service}</p>
+
         <p className="text-sm text-gray-500">
           Professional service by verified experts near you.
         </p>
 
-  
+        {/* Location + Price */}
         <div className="flex justify-between items-center text-sm mt-2">
-          <span className="text-gray-600">📍 {location}</span>
-          <span className="text-blue-600 font-semibold">{price}</span>
+          <span className="text-gray-600"><MapPin className="inline-block mr-1 w-4 h-4  " /> {location}</span>
+          <span className="text-blue-600 font-semibold">₹{price}</span>
         </div>
 
-        <PrimaryBtn btn="Book Now" className="w-full mt-3" />
+        {/* Buttons */}
+        <div className="flex gap-2 mt-3">
+          <div className="w-1/2">
+            <SecondaryBtn
+              btn="View"
+              className="w-full text-blue-700! active:bg-[#1E4ED8]! border-[#1E4ED8]!  active:text-white! transition-colors duration-300 active:bg-blue-800! active:border-blue-800!"
+            />
+          </div>
+          <div className="w-1/2">
+            <PrimaryBtn btn="Book Now" className="w-full" />
+          </div>
+        </div>
       </div>
     </div>
   );

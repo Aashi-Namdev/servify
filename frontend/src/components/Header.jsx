@@ -16,7 +16,7 @@ function Header() {
   return (
       <div className="absolute top-0 left-0  z-20 px-15 py-5  w-full flex items-center justify-between">
         <Link className="brightness-150" to="/">
-          <img src={logo} alt="Logo" className="w-44" />
+          <img src={logo} alt="Logo" className="w-44 cursor-auto" />
         </Link>
 
         <div className=" text-white">
@@ -44,7 +44,7 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/providers"
+                to="/provider"
                 className={({ isActive }) =>
                   `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
