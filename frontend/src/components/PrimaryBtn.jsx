@@ -3,9 +3,14 @@ import React from 'react'
 function PrimaryBtn({btn,onclick,className}) {
   return (
     <div>
-        <button 
+        {/* <button 
         onClick={onclick}
-        className={`bg-[#1E4ED8] px-7 text-white py-2.5 rounded-xl text-sm  shadow-2xl cursor-pointer hover:bg-blue-700 transition active:bg-blue-800  duration-200 ${className}`}>
+        className={`bg-[#1E4ED8] px-7 text-white py-2.5 rounded-xl text-sm  shadow-2xl cursor-pointer hover:opacity-80 transition active:bg-blue-800  duration-200 ${className}`}>
+            {btn}
+        </button> */}
+        <button
+        onClick={onclick}
+        className={`bg-[#1E4ED8] px-7  text-white py-2.5 rounded-xl text-sm  shadow-2xl cursor-pointer hover:scale-102 duration-400 transition active:bg-blue-800  duration-200 ${className}`}>
             {btn}
         </button>
     </div>

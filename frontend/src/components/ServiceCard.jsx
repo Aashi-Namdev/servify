@@ -3,24 +3,28 @@ import React from "react";
 import PrimaryBtn from "./PrimaryBtn";
 import SecondaryBtn from "./SecondaryBtn";
 import { MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
-export default function ServiceCard({
-  providerName,
-  service,
-  image,
-  rating,
-  location,
-  price,
-  tag,
-}) {
+
+export default function ServiceCard({ service }) {
+  const { providerName, service: serviceName, rating, location, price, image, tag, description } = service;
+
+    const handleBookNow = () => { 
+      const id =Math.floor(Math.random()*10+1);
+      console.log(id);
+    }
+
   return (
-    <div className="group w-72 shrink-0 snap-start bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 overflow-hidden">
+    <div className="group h-full w-full bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 overflow-hidden">
       <div className="relative">
-        <img
-          src={image}
-          alt={providerName}
-          className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+        {image && (
+          <img
+            loading="lazy"
+            src={image}
+            alt={providerName}
+            className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        )}
 
         {tag && (
           <span className="absolute top-3 left-3 bg-blue-600/90 backdrop-blur px-3 py-1 text-xs text-white rounded-full">
@@ -42,10 +46,10 @@ export default function ServiceCard({
         </div>
 
         {/* Service Name */}
-        <p className="text-sm text-blue-600 font-medium">{service}</p>
+        <p className="text-sm text-blue-600 font-medium">{serviceName}</p>
 
         <p className="text-sm text-gray-500">
-          Professional service by verified experts near you.
+          {description}
         </p>
 
         {/* Location + Price */}
@@ -57,13 +61,17 @@ export default function ServiceCard({
         {/* Buttons */}
         <div className="flex gap-2 mt-3">
           <div className="w-1/2">
-            <SecondaryBtn
+          <Link
+              to={`/services/${service.id}`}
+            >
+              <SecondaryBtn
               btn="View"
-              className="w-full text-blue-700! active:bg-[#1E4ED8]! border-[#1E4ED8]!  active:text-white! transition-colors duration-300 active:bg-blue-800! active:border-blue-800!"
+              className="w-full text-blue-700! active:bg-[#1E4ED8]! border-[#1E4ED8]!  hover:text-white! transition-colors duration-400 hover:bg-[#1E4ED8]! hover:border-[#1E4ED8]!"
             />
+          </Link>
           </div>
           <div className="w-1/2">
-            <PrimaryBtn btn="Book Now" className="w-full" />
+            <PrimaryBtn btn="Book Now" className="w-full" onclick={()=>handleBookNow()} />
           </div>
         </div>
       </div>

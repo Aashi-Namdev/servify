@@ -2,7 +2,7 @@ import React from 'react'
 
 function PageHero({img, title, subtitle, position}) {
   return (
-    <div className='relative h-[40vh] w-full bg-cover bg-center bg-no-repeat'
+    <div className='relative h-[35vh] w-full bg-cover bg-center bg-no-repeat'
         style={{ backgroundImage: `url('${img}')`, backgroundPositionY: `${position}`, backgroundPositionX: "50%" }}>
         <div className='absolute inset-0 bg-gradient-to-b from-black/80 to-black/60'></div>
         <div className='absolute inset-0 flex  items-center justify-center p-4'>

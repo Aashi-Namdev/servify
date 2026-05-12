@@ -13,12 +13,13 @@ function HeroSection() {
       <div className="relative h-[90vh] w-full overflow-hidden">
         <img
           src={bg}
-          alt=""
+          alt="Hero background"
+          loading="lazy"
           className="absolute h-full w-full object-cover inset-0 brightness-75 contrast-110"
         />
-      
+
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/30"></div>
-  
+
         <div className="relative z-10 flex  items-center justify-start h-full px-10">
           <div className="text-white max-w-md">
             <h1 className="text-5xl font-bold">
@@ -64,4 +65,3 @@ function HeroSection() {
 }
 
 export default HeroSection;
-
