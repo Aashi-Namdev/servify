@@ -29,17 +29,17 @@ function HowItWorks() {
 
   return (
     <div id="howItWorks" className="px-4 md:px-10 py-5">
-      <div className="text-center mb-12">
+      <div className="text-left mb-6">
         <h2 className="text-2xl md:text-3xl font-bold text-black">
           How It Works
         </h2>
-        <p className="text-sm text-gray-600 mt-2">
+        <p className="text-sm text-gray-600">
           Simple steps to book your service
         </p>
       </div>
 
   
-      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         
         {steps.map((step, index) => (
           <WorkingCard

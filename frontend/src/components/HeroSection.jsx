@@ -6,7 +6,7 @@ import { Search, MapPin } from "lucide-react";
 import { useForm } from "react-hook-form";
 
 function HeroSection() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit , formState: { errors } ,reset} = useForm();
 
   return (
     <div className=" w-full relative mb-20">
@@ -23,7 +23,8 @@ function HeroSection() {
         <div className="relative z-10 flex  items-center justify-start h-full px-10">
           <div className="text-white max-w-md">
             <h1 className="text-5xl font-bold">
-              Book Trusted Home Service Experts in Minutes
+              Book Trusted Home <span className="text-[#1E4ED8]">Service</span>{" "}
+              Experts in Minutes
             </h1>
             <p className="my-5 mb-10">
               From daily chores to urgent repairs, find trusted professionals
@@ -31,28 +32,18 @@ function HeroSection() {
               at your doorstep.
             </p>
             <form onSubmit={handleSubmit((data) => console.log(data))}>
-              <div className="flex items-center bg-white rounded-xl mb-5 relative w-4/5 ">
-                <Search className="absolute  left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input
-                  {...register("service")}
-                  type="text"
-                  spellCheck="false"
-                  placeholder="Search for services(e.g. AC Repair...)"
-                  className="w-full pl-10 ml-4  py-3 text-sm text-gray-800  focus:outline-none "
-                />
-              </div>
-              <div className="flex items-center gap-3 mb-5 w-full">
-                <div className="flex items-center bg-white rounded-xl relative w-5/12">
-                  <MapPin className="absolute  left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                  <input
-                    {...register("location")}
-                    type="text"
-                    spellCheck="false"
-                    placeholder="Location"
-                    className="w-full pl-10 ml-4  py-3 text-sm text-gray-800  focus:outline-none "
-                  />
-                </div>
-                <PrimaryBtn btn="Find Services" />
+              <div className="w-full px-4 py-3 rounded-full  relative">
+                <input 
+                {...register("service")}
+                type="text"
+                spellCheck="false"
+                className="w-full border border-white/20 px-4 backdrop-blur-sm focus:outline-none transition-all focus:border-2 focus:border-blue-400 hover:border-white/40 py-3 placeholder:text-sm text:gray-400 text-sm rounded-full"
+                placeholder="What service do you need today?"
+                 />
+                  <PrimaryBtn
+                  btn={<Search size={26} />}
+                  className="absolute right-4 top-3 px-6 py-2.5 rounded-full! rounded-l-none!"/>
+                 
               </div>
             </form>
           </div>

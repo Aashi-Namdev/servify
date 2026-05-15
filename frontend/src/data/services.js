@@ -4,8 +4,8 @@ const services = [
   { id: "maid-service", name: "House Maid" ,category:"Cleaning" },
   { id: "pest-control", name: "Pest Control" ,category:"Cleaning" },
   
-  { id: "plumbing", name: "Plumbing" ,category:"Repairing"},
-  { id: "electrician", name: "Electrician",category:"Repairing" },
+  { id: "plumbing", name: "Plumbing Services" ,category:"Repairing"},
+  { id: "electrician", name: "Electrical Services",category:"Repairing" },
   { id: "ac-repair", name: "AC Repair" ,category:"Repairing"},
   { id: "washing-machine-repair", name: "Washing Machine Repair" ,category:"Repairing" },
   { id: "refrigerator-repair", name: "Refrigerator Repair" ,category:"Repairing" },
@@ -21,13 +21,13 @@ const services = [
   { id: "water-purifier-installation", name: "RO Installation" ,category:"Installation" },
   { id: "cctv-installation", name: "CCTV Installation" ,category:"Installation" },
 
-  { id: "cooking", name: "Cooking" ,category:"Food" },
-  { id: "catering", name: "Catering" ,category:"Food" },
+  { id: "cooking", name: "Cooking" ,category:"Food Services" },
+  { id: "catering", name: "Catering" ,category:"Food Services" },
 
-  { id: "babysitting", name: "Babysitting" ,category:"Personal" },
-  { id: "elder-care", name: "Elder Care" ,category:"Personal" },
-  { id: "haircut-grooming", name: "Haircut & Grooming" ,category:"Personal" },
-  { id: "spa-therapy", name: "Spa Therapy" ,category:"Personal" },
+  { id: "babysitting", name: "Babysitting" ,category:"Personal Services" },
+  { id: "elder-care", name: "Elder Care" ,category:"Personal Services" },
+  { id: "haircut-grooming", name: "Haircut & Grooming" ,category:"Personal Services" },
+  { id: "spa-therapy", name: "Spa Therapy" ,category:"Personal Services" },
 
   { id: "wifi-setup", name: "WiFi Setup" ,category:"Tech Services" },
   { id: "laptop-repair", name: "Laptop Repair" ,category:"Tech Services" },

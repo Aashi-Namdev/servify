@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import bg from "../assets/hero/bg.svg";
 import { useForm } from "react-hook-form";
+import { IoIosArrowBack } from "react-icons/io";
 
 function AuthCard({ isFlipped, setIsFlipped }) {
   // const [isFlipped, setIsFlipped] = useState(false);
@@ -26,12 +27,11 @@ function AuthCard({ isFlipped, setIsFlipped }) {
         >
           {/* LOGIN CARD */}
           <div className="absolute bg-white w-full h-full backface-hidden p-6 rounded-2xl shadow-2xl">
-            <Link className="text-2xl font-bold text-left text-blue-600" to="/">
-              Servify
+            <Link className="text-sm flex  hover:text-blue-600 text-gray-500 items-center mb-7 gap-1.5 font-bold text-left" to="/">
+              <IoIosArrowBack />
+              <span>Go Back</span>
             </Link>
-            <p className="text-gray-500 text-sm  mb-3 text-left">
-              Services in minutes
-            </p>
+
             <h2 className="text-2xl font-semibold mb-4 text-left ">
               Welcome Back!
             </h2>
@@ -85,7 +85,7 @@ function AuthCard({ isFlipped, setIsFlipped }) {
                 </div>
               </div>
 
-              <button className="w-full bg-blue-500 text-white mt-5 py-2 rounded cursor-pointer hover:bg-blue-600">
+              <button className="w-full bg-blue-500 text-white mt-7 py-2 rounded cursor-pointer hover:bg-blue-600">
                 Login
               </button>
             </form>
@@ -103,12 +103,10 @@ function AuthCard({ isFlipped, setIsFlipped }) {
 
           {/* SIGNUP CARD */}
           <div className="absolute   backface-hidden bg-white p-6 overflow-hidden  rounded-2xl shadow-2xl rotate-y-180">
-            <Link className="text-2xl font-bold text-left text-blue-600" to="/">
-              Servify
+            <Link className="text-sm flex hover:text-blue-600 text-gray-500 items-center mb-7 gap-1.5 font-bold text-left" to="/">
+              <IoIosArrowBack />
+              Go Back
             </Link>
-            <p className="text-gray-500 text-sm  mb-3 text-left">
-              Services in minutes
-            </p>
 
             <form
               action=""

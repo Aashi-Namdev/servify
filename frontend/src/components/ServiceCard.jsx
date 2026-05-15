@@ -4,10 +4,10 @@ import PrimaryBtn from "./PrimaryBtn";
 import SecondaryBtn from "./SecondaryBtn";
 import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import { MdElectricBolt } from "react-icons/md";
 
 export default function ServiceCard({ service }) {
-  const { providerName, service: serviceName, rating, location, price, image, tag, description } = service;
+  const { providerName, service: serviceName, rating, location, price, image,instantBooking } = service;
 
     const handleBookNow = () => { 
       const id =Math.floor(Math.random()*10+1);
@@ -15,28 +15,34 @@ export default function ServiceCard({ service }) {
     }
 
   return (
-    <div className="group h-full w-full bg-white rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 overflow-hidden">
-      <div className="relative">
+    <div className="group h-full w-full  bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+      <div className="relative ">
+        <div className="absolute inset-0 bg-gradient-to-top from-black/20 to-transparent" />
         {image && (
           <img
             loading="lazy"
             src={image}
             alt={providerName}
-            className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
           />
         )}
 
-        {tag && (
-          <span className="absolute top-3 left-3 bg-blue-600/90 backdrop-blur px-3 py-1 text-xs text-white rounded-full">
-            {tag}
-          </span>
-        )}
+      {instantBooking && (
+        <span
+          className="
+            absolute top-4 right-4
+            inline-flex items-center gap-1.5 rounded-full bg-amber-500/90 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white shadow-lg shadow-amber-900/20 ring-1 ring-white/15  transition-all duration-200 "
+        >
+          <MdElectricBolt className="text-[11px]" />
+          Instant Booking
+        </span>
+      )}
       </div>
 
-      <div className="p-4 space-y-2">
+      <div className="p-4 space-y-1">
         {/* Provider Name + Rating */}
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold text-gray-800">
+          <h3 className="text-medium font-semibold text-gray-800">
             {providerName}
           </h3>
 
@@ -46,20 +52,16 @@ export default function ServiceCard({ service }) {
         </div>
 
         {/* Service Name */}
-        <p className="text-sm text-blue-600 font-medium">{serviceName}</p>
-
-        <p className="text-sm text-gray-500">
-          {description}
-        </p>
+        <p className="text-[13px] text-blue-600 font-medium mb-5">{serviceName}</p>
 
         {/* Location + Price */}
-        <div className="flex justify-between items-center text-sm mt-2">
-          <span className="text-gray-600"><MapPin className="inline-block mr-1 w-4 h-4  " /> {location}</span>
+        <div className="flex justify-between items-center text-[13px] mt-2">
+          <span className="text-gray-600"><MapPin className="inline-block  w-4 h-4  " /> {location} <span className="text-gray-500 px-2">•</span> </span>
           <span className="text-blue-600 font-semibold">₹{price}</span>
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-2 mt-3">
+        <div className="flex gap-4 items-center mt-2">
           <div className="w-1/2">
           <Link
               to={`/services/${service.id}`}

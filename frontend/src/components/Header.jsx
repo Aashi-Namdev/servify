@@ -3,6 +3,7 @@ import { NavLink,Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryBtn from "./PrimaryBtn";
 import SecondaryBtn from "./SecondaryBtn";
 import logo from "../assets/other/logo.png";
+import { FiLogIn } from "react-icons/fi";
 
 function Header() {
   const navigate = useNavigate();
@@ -20,12 +21,12 @@ function Header() {
         </Link>
 
         <div className=" text-white">
-          <ul className="flex gap-8 ">
+          <ul className="flex gap-7 text-sm ">
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
+                  `font-semibold ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
               >
                 Home
@@ -35,7 +36,7 @@ function Header() {
               <NavLink
                 to="/services"
                 className={({ isActive }) =>
-                  `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
+                  `font-semibold ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
               >
                 Services
@@ -46,7 +47,7 @@ function Header() {
               <NavLink
                 to="/provider"
                 className={({ isActive }) =>
-                  `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
+                  `font-semibold  ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
               >
                 Providers
@@ -56,7 +57,7 @@ function Header() {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
+                  `font-semibold  ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
               >
                 About
@@ -66,7 +67,7 @@ function Header() {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  `font-semibold hover:underline ${isActive ? "text-blue-600 font-bold" : "text-white"}`
+                  `font-semibold ${isActive ? "text-blue-600 font-bold" : "text-white"}`
                 }
               >
                 Contact
@@ -77,13 +78,16 @@ function Header() {
         </div>
 
         <div className="flex gap-4">
-          <PrimaryBtn
-            btn="Login"
-            onclick={() => {
-              navigate("/auth", { state: { isFlipped: false } })
+    
+          <button
+            onClick={() => {
+              navigate("/auth", { state: { isFlipped: false } });
             }}
-          />
-          <SecondaryBtn
+           className="text-white group hover:scale-105 duration-300  text-sm transition cursor-pointer flex items-center gap-2 font-bold px-3 py-1">
+            <FiLogIn className="font-bold group-hover:scale-110 transition duration-300" />
+            Login 
+            </button>
+          <PrimaryBtn
             btn="Sign Up"
             onclick={() => {
               navigate("/auth", { state: { isFlipped: true } });
