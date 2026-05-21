@@ -1,7 +1,7 @@
 import React from "react";
-import PageHero from "../components/PageHero";
+import PageHero from "../components/ui/PageHero";
 import { useForm } from "react-hook-form";
-import PrimaryBtn from "../components/PrimaryBtn";
+import PrimaryBtn from "../components/ui/PrimaryBtn";
 import { LuMapPin } from "react-icons/lu";
 import { CiMail, CiPhone } from "react-icons/ci";
 import { CiCircleQuestion } from "react-icons/ci";
@@ -142,23 +142,28 @@ function ContactPage() {
               <ul className="space-y-6 text-sm text-gray-700">
                 <li className="flex items-center gap-3">
                   <LuMapPin className="w-5 h-5 text-gray-500" />
-                  <span>123 Main Street, Prayagraj, Uttar Pradesh, India</span>
+                  <span>MNNIT Allahabad, Prayagraj, Uttar Pradesh, India</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CiMail className="w-5 h-5 text-gray-500" />
-                  <span><Link to="mailto:info@servify.com">info@servify.com</Link></span>
+                  <span>
+                    <Link to="mailto:info@servify.com">info@servify.com</Link>
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <CiPhone className="w-5 h-5 text-gray-500" />
-                  <span><Link to="tel:+11234567890">+1 (123) 456-7890</Link></span>
+                  <span>
+                    <Link to="tel:+918263000000">+91 8299775247</Link>
+                  </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span><CiCircleQuestion className="w-5 h-5 text-gray-500" /></span>
+                  <span>
+                    <CiCircleQuestion className="w-5 h-5 text-gray-500" />
+                  </span>
                   Online Support 24/7 - Any Question on any time
                 </li>
               </ul>
             </div>
-
           </aside>
         </div>
       </section>

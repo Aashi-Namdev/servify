@@ -6,7 +6,7 @@ function WorkingCard({ icon, title, description, step }) {
   return (
     <div
       className="
-        group relative w-64 overflow-hidden
+        group relative w-full max-w-sm overflow-hidden
         rounded-2xl border border-blue-100/70
         bg-white/90 backdrop-blur-sm
         shadow-md hover:shadow-2xl

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import AuthCard from "../components/AuthCard";
+import AuthCard from "../components/ui/AuthCard";
 
 function AuthPage() {
   const location = useLocation();
@@ -10,18 +10,18 @@ function AuthPage() {
 
   useEffect(() => {
     if (location.state && location.state.isFlipped !== undefined) {
-      setIsFlipped(location.state.isFlipped);
+      const id = requestAnimationFrame(() =>
+        setIsFlipped(location.state.isFlipped),
+      );
+      return () => cancelAnimationFrame(id);
     }
   }, [location.state]);
 
-
   return (
-    <div >
+    <div>
       <AuthCard isFlipped={isFlipped} setIsFlipped={setIsFlipped} />
     </div>
   );
 }
-
-
 
 export default AuthPage;

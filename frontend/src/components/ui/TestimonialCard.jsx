@@ -1,20 +1,19 @@
 import React from "react";
-import { Star } from "lucide-react";
-import { User2, User } from "lucide-react";
+import { FiStar, FiUser } from "react-icons/fi";
 
 function TestimonialCard({ testimonial, isActive }) {
   const { name, role, content, review } = testimonial;
   return (
     <div 
-      className={`bg-[#0F2F66] min-h-44 flex flex-col justify-between rounded-lg p-5 max-w-96 text-gray-300 shadow-lg shrink-0 duration-300 snap-center transition-transform ${
-        isActive ? "scale-110" : "scale-95 hover:scale-100"
+      className={`bg-[#0F2F66] min-h-44 w-[calc(100vw_-_2rem)] sm:w-80 md:w-96 flex flex-col justify-between rounded-lg p-5 max-w-96 text-gray-300 shadow-lg shrink-0 duration-300 snap-center transition-transform ${
+        isActive ? "scale-100 sm:scale-110" : "scale-95 hover:scale-100"
       }`}
     >
       <div className="text-sm mb-3">{content}</div>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
           <div className="w-10 h-10 rounded-full bg-gray-500 mr-3 flex items-center justify-center overflow-hidden">
-            <User className=" object-cover text-gray-300 size-6" />
+            <FiUser className=" object-cover text-gray-300 size-6" />
           </div>
           <div>
             <h3 className="text-sm font-bold text-gray-300">{name}</h3>
@@ -23,7 +22,7 @@ function TestimonialCard({ testimonial, isActive }) {
         </div>
         <div className="flex items-center border-gray-300 border rounded-full px-2 py-1">
           {Array.from({ length: 5 }).map((_, index) => (
-            <Star 
+            <FiStar 
               key={index} 
               className={`w-5 h-5 ${index < review ? "text-amber-400 fill-current" : "text-gray-400"}`} 
             />

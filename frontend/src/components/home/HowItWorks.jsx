@@ -1,34 +1,34 @@
 
 import React from "react";
-import WorkingCard from "./WorkingCard";
-import { Search, User, Calendar, Star } from "lucide-react";
+import WorkingCard from "../ui/WorkingCard";
+import { FiCalendar, FiSearch, FiStar, FiUser } from "react-icons/fi";
 
 function HowItWorks() {
   const steps = [
     {
-      icon: <Search size={24} />,
+      icon: <FiSearch size={24} />,
       title: "Search Service",
       description: "Find the service you need near you quickly and easily.",
     },
     {
-      icon: <Calendar size={24} />,
+      icon: <FiCalendar size={24} />,
       title: "Schedule Appointment",
       description: "Select a convenient date and time.",
     },
     {
-      icon: <User size={24} />,
+      icon: <FiUser size={24} />,
       title: "Get it Done",
       description: "Sit back while professionals complete your service.",
     },
     {
-      icon: <Star size={24} />,
+      icon: <FiStar size={24} />,
       title: "Review & Feedback",
       description: "Share your experience and help others decide.",
     },
   ];
 
   return (
-    <div id="howItWorks" className="px-4 md:px-10 py-5">
+    <div id="howItWorks" className="px-4 sm:px-6 md:px-10 py-5">
       <div className="text-left mb-6">
         <h2 className="text-2xl md:text-3xl font-bold text-black">
           How It Works
@@ -39,7 +39,7 @@ function HowItWorks() {
       </div>
 
   
-      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 justify-items-center">
         
         {steps.map((step, index) => (
           <WorkingCard
