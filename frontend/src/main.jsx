@@ -14,6 +14,7 @@ import ServicesPage from "./pages/ServicesPage.jsx";
 import ProviderPage from "./pages/ProviderPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
+import ViewDetails from "./pages/ViewDetails.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="provider" element={<ProviderPage />} />
       <Route path="services" element={<ServicesPage />} />
+      <Route path="services/viewDetails/:id" element={<ViewDetails />} />
       <Route path="contact" element={<ContactPage />} />
       <Route path="auth" element={<AuthPage />} />
     </Route>,
