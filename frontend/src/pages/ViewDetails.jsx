@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BookingCard from "../components/service/BookingCard";
 import { Link, useLocation, useParams } from "react-router-dom";
 import providers from "../data/providers";
 import defaultSlots from "../constants/availableSlots";
@@ -25,6 +26,68 @@ import { CiCircleCheck } from "react-icons/ci";
 import { MdEventAvailable, MdElectricBolt } from "react-icons/md";
 import PrimaryBtn from "../components/ui/PrimaryBtn";
 
+function ProviderCard({ provider, onBook }) {
+  const expert = provider.provider || {};
+
+  return (
+    <div className="w-full rounded-2xl border border-gray-100 bg-white p-5 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          {expert.image ? (
+            <img
+              src={expert.image}
+              alt={expert.name}
+              className="h-20 w-20 rounded-2xl object-cover"
+            />
+          ) : (
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50 text-[#1E4ED8]">
+              <FaUserCheck className="text-3xl" />
+            </div>
+          )}
+        </div>
+
+        <div className="flex-1">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-bold text-gray-900">{expert.name}</h2>
+
+            <div className="flex items-center gap-1 rounded-full bg-amber-50 px-2 py-1 text-sm font-semibold text-amber-600">
+              <FaStar className="text-xs" />
+
+              <span>{provider.rating}</span>
+            </div>
+          </div>
+
+          <p className="mt-1 text-sm font-semibold text-gray-500">
+            {provider.providerName}
+          </p>
+
+          <div className="mt-3 flex flex-wrap gap-2">
+            <span className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700">
+              <TiBriefcase />
+              {expert.experience} Experience
+            </span>
+
+            <span className="flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
+              <TbUserCheck />
+              Verified
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div className="my-4 border-t border-gray-100"></div>
+
+      <p className="text-sm leading-7 text-gray-600">{expert.bio}</p>
+
+      <PrimaryBtn
+        btn="Book Now"
+        onclick={onBook}
+        className="mt-5 w-full py-3.5 text-base"
+      />
+    </div>
+  );
+}
+
 function ViewDetails() {
   const { id } = useParams();
 
@@ -38,7 +101,7 @@ function ViewDetails() {
 
   useEffect(() => {
     detect();
-  }, []);
+  }, [detect]);
 
   const p =
     nearbyProvidersList.find((provider) => provider.id === id) || baseProvider;
@@ -48,6 +111,7 @@ function ViewDetails() {
   const [index, setIndex] = useState(0);
 
   const [showToast, setShowToast] = useState(false);
+  const [openBooking, setOpenBooking] = useState(false);
 
   const handleBookmarkClick = () => {
     setShowToast(true);
@@ -65,7 +129,10 @@ function ViewDetails() {
     );
   }
 
-  const images = [p.coverImage, ...p.galleryImages];
+  const galleryImages = Array.isArray(p.galleryImages) ? p.galleryImages : [];
+  const includes = Array.isArray(p.includes) ? p.includes : [];
+  const reviews = Array.isArray(p.reviews) ? p.reviews : [];
+  const images = [p.coverImage, ...galleryImages].filter(Boolean);
 
   const slotGroups = [
     { key: "today", label: "Today", isAvailable: p.availableToday },
@@ -82,69 +149,13 @@ function ViewDetails() {
     };
   });
 
-  const BookingCard = () => (
-    <div className="w-full rounded-2xl border border-gray-100 bg-white p-5 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="flex items-center gap-4">
-        <div className="relative">
-          {p.provider.image ? (
-            <img
-              src={p.provider.image}
-              alt={p.provider.name}
-              className="h-20 w-20 rounded-2xl object-cover"
-            />
-          ) : (
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-50 text-[#1E4ED8]">
-              <FaUserCheck className="text-3xl" />
-            </div>
-          )}
-        </div>
-
-        <div className="flex-1">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-gray-900">
-              {p.provider.name}
-            </h2>
-
-            <div className="flex items-center gap-1 rounded-full bg-amber-50 px-2 py-1 text-sm font-semibold text-amber-600">
-              <FaStar className="text-xs" />
-
-              <span>{p.rating}</span>
-            </div>
-          </div>
-
-          <p className="mt-1 text-sm font-semibold text-gray-500">
-            {p.providerName}
-          </p>
-
-          <div className="mt-3 flex flex-wrap gap-2">
-            <span className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700">
-              <TiBriefcase />
-              {p.provider.experience} Experience
-            </span>
-
-            <span className="flex items-center gap-1 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700">
-              <TbUserCheck />
-              Verified
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className="my-4 border-t border-gray-100"></div>
-
-      <p className="text-sm leading-7 text-gray-600">{p.provider.bio}</p>
-
-      <PrimaryBtn btn="Book Now" className="mt-5 w-full py-3.5 text-base" />
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8 sm:px-6 lg:px-10">
       <Link
         className="mb-6 inline-flex items-center gap-1.5 px-4 sm:px-10 md:px-20 text-sm font-bold text-gray-500 hover:text-blue-600"
         to="/services"
         onClick={() =>
-          scrollTo({
+          window.scrollTo({
             top: 0,
             behavior: "smooth",
           })
@@ -194,7 +205,7 @@ function ViewDetails() {
               <span className="mr-1">
                 <IoIosTimer />
               </span>
-              {p.duration}
+              {p.estimatedDuration}
             </div>
           </div>
 
@@ -210,7 +221,7 @@ function ViewDetails() {
             </span>
           </div>
 
-          {p.galleryImages.map((img, i) => (
+          {galleryImages.map((img, i) => (
             <div
               key={i}
               className="group col-span-2 h-[76px] sm:h-[122px] md:h-[208px] overflow-hidden rounded-r-xl"
@@ -239,6 +250,14 @@ function ViewDetails() {
         index={index}
       />
 
+      {openBooking && (
+        <BookingCard
+          key={p.id}
+          service={p}
+          setOpenBooking={setOpenBooking}
+        />
+      )}
+
       {showToast && (
         <div className="absolute right-30 top-50 z-50 flex -translate-x-1/2 animate-bounce items-center gap-2 rounded-lg bg-gray-300 px-4 py-1 text-sm text-gray-500 shadow-lg">
           <FaBookmark className="text-gray-500" />
@@ -254,7 +273,7 @@ function ViewDetails() {
           </p>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
-            <Link className="flex w-fit items-center rounded-lg bg-gray-200 px-4 py-2 text-[13px] font-medium">
+            <div className="flex w-fit items-center rounded-lg bg-gray-200 px-4 py-2 text-[13px] font-medium">
               {p.rating}
 
               <FaStar className="ml-2 text-green-600" />
@@ -262,7 +281,7 @@ function ViewDetails() {
               <span className="mx-2">|</span>
 
               <span className="text-gray-500">{p.totalReviews}</span>
-            </Link>
+            </div>
 
             <div className="flex w-fit items-center rounded-lg bg-gray-200 px-4 py-2 text-[13px] font-medium">
               <span className="mr-2 text-green-600">
@@ -336,7 +355,7 @@ function ViewDetails() {
           </div>
 
           <div className="mt-8 block lg:hidden sm:max-w-md sm:mx-auto">
-            <BookingCard />
+            <ProviderCard provider={p} onBook={() => setOpenBooking(true)} />
           </div>
 
           <div className="mt-10 border-y border-gray-300 py-5">
@@ -350,7 +369,7 @@ function ViewDetails() {
                   What's Included?
                 </h2>
 
-                {p.includes.map((item, i) => (
+                {includes.map((item, i) => (
                   <div key={i} className="mt-3 flex items-start gap-3">
                     <span className="mt-0.5 text-gray-600">
                       <CiCircleCheck />
@@ -437,13 +456,13 @@ function ViewDetails() {
 
           <div className="py-5">
             <h1 className="text-lg font-bold tracking-wide">
-              {p.reviews.length > 0
-                ? `CUSTOMER REVIEWS (${p.reviews.length})`
+              {reviews.length > 0
+                ? `CUSTOMER REVIEWS (${reviews.length})`
                 : "CUSTOMER REVIEWS"}
             </h1>
-            {p.reviews.length > 0 ? (
+            {reviews.length > 0 ? (
               <div className="mt-4 space-y-4 border-b border-gray-300 pt-4">
-                {p.reviews.map((review, i) => (
+                {reviews.map((review, i) => (
                   <div key={i} className="p-4">
                     <div className="flex items-center gap-3 ">
                       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-700">
@@ -485,7 +504,7 @@ function ViewDetails() {
         </div>
 
         <aside className="hidden w-full lg:sticky lg:top-24 lg:block lg:w-[380px] lg:self-start">
-          <BookingCard />
+          <ProviderCard provider={p} onBook={() => setOpenBooking(true)} />
         </aside>
       </div>
     </div>

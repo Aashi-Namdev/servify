@@ -1,39 +1,34 @@
 const providers = [
   {
-    id: "p1",//
-    title: "Home Cleaning",//
-    category: "Cleaning",//
-    providerName: "CleanPro Services",//
-    serviceId: "home-cleaning",//
-    rating: 4.2,//
-    totalReviews: 320,//
-    bookingsCompleted: 1200,//
-    location: "Allahabad",//
-    lat: 25.426947,//
-    lon: 81.852652,//
-    price: 499,//
-    status: "approved",//
-    estimatedDuration: "2-3 hours",//
-    coverImage://
+    id: "p1",
+    title: "Home Cleaning",
+    category: "Cleaning",
+    providerName: "CleanPro Services",
+    serviceId: "home-cleaning",
+    rating: 4.2,
+    totalReviews: 320,
+    bookingsCompleted: 1200,
+    location: "Allahabad",
+    lat: 25.426947,
+    lon: 81.852652,
+    price: 499,
+    status: "approved",
+    estimatedDuration: "2-3 hours",
+    coverImage:
       "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&auto=format&fit=crop&q=80",
-    galleryImages: [//
+    galleryImages: [
       "https://images.unsplash.com/photo-1627905646269-7f034dcc5738?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=600&auto=format&fit=crop&q=80",
 
     ],
-    description://
+    description:
       "Professional home cleaning services by verified experts near you.",
-    includes: [//
+    includes: [
       "Dusting",
       "Floor cleaning",
       "Bathroom cleaning",
       "Kitchen cleaning",
     ],
-    availableSlots: {
-      today:[],
-      // today: ["9:00 AM", "10:00 AM", "12:00 PM", "3:00 PM"],
-      tomorrow: ["10:00 AM", "11:00 AM", "2:00 PM", "5:00 PM"],
-    },
     provider: {
       name: "Raj Sharma",
       image: "https://randomuser.me/api/portraits/men/32.jpg",
@@ -48,12 +43,6 @@ const providers = [
         state: "Uttar Pradesh",
         pincode: "211001",
       },
-    },
-    pricing: {
-      basePrice: 399,
-      serviceFee: 50,
-      taxes: 50,
-      total: 499,
     },
     reviews: [
       {
@@ -73,6 +62,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: false,
   },
 
@@ -99,10 +89,6 @@ const providers = [
     ],
     description: "Deep cleaning solutions for your home and office.",
     includes: ["Sofa cleaning", "Floor scrubbing", "Kitchen cleaning"],
-    availableSlots: {
-      today: ["9:00 AM", "1:00 PM", "4:00 PM", "6:00 PM"],
-      tomorrow: ["10:00 AM", "12:00 PM", "2:00 PM", "3:00 PM"],
-    },
     provider: {
       name: "Vikram Singh",
       image: "",
@@ -118,12 +104,6 @@ const providers = [
         pincode: "211002",
       },
     },
-    pricing: {
-      basePrice: 799,
-      serviceFee: 50,
-      taxes: 50,
-      total: 899,
-    },
     reviews: [
       {
         id: 1,
@@ -135,6 +115,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -161,10 +142,6 @@ const providers = [
     ],
     description: "Expert AC repair services for split and window ACs.",
     includes: ["Gas refill", "Cooling check", "Filter cleaning"],
-    availableSlots: {
-      today: ["9:00 AM", "11:00 AM", "2:00 PM"],
-      tomorrow: ["10:00 AM", "12:00 PM", "4:00 PM", "6:00 PM"],
-    },
     provider: {
       name: "Imran Khan",
       image: "https://randomuser.me/api/portraits/men/45.jpg",
@@ -180,12 +157,6 @@ const providers = [
         pincode: "211002",
       },
     },
-    pricing: {
-      basePrice: 599,
-      serviceFee: 50,
-      taxes: 50,
-      total: 699,
-    },
     reviews: [
       {
         id: 1,
@@ -197,6 +168,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -224,10 +196,6 @@ const providers = [
     ],
     description: "Reliable washing machine repair services at your doorstep.",
     includes: ["Motor check", "Pipe repair", "Drain cleaning"],
-    availableSlots: {
-      today: ["10:00 AM", "11:00 AM", "3:00 PM"],
-      tomorrow: ["9:00 AM", "1:00 PM", "5:00 PM"],
-    },
     provider: {
       name: "Sanjay Verma",
       image: "https://randomuser.me/api/portraits/men/22.jpg",
@@ -243,12 +211,6 @@ const providers = [
         pincode: "211008",
       },
     },
-    pricing: {
-      basePrice: 449,
-      serviceFee: 50,
-      taxes: 50,
-      total: 549,
-    },
     reviews: [
       {
         id: 1,
@@ -260,6 +222,7 @@ const providers = [
     ],
     availableToday: false,
     availableTomorrow: true,
+    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -287,10 +250,6 @@ const providers = [
     description:
       "Professional electrician services for all household electrical needs.",
     includes: ["Wiring", "Fan installation", "MCB repair"],
-    availableSlots: {
-      today: ["10:00 AM", "12:00 PM", "4:00 PM"],
-      tomorrow: ["9:00 AM", "11:00 AM", "3:00 PM", "6:00 PM"],
-    },
     provider: {
       name: "Arjun Verma",
       image: "https://randomuser.me/api/portraits/men/67.jpg",
@@ -306,12 +265,6 @@ const providers = [
         pincode: "211001",
       },
     },
-    pricing: {
-      basePrice: 249,
-      serviceFee: 50,
-      taxes: 50,
-      total: 349,
-    },
     reviews: [
       {
         id: 1,
@@ -323,6 +276,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -349,10 +303,6 @@ const providers = [
     ],
     description: "Professional TV wall mounting and installation service.",
     includes: ["Wall mounting", "Cable setup", "Testing"],
-    availableSlots: {
-      today: ["9:00 AM", "11:00 AM", "2:00 PM", "5:00 PM"],
-      tomorrow: ["10:00 AM", "11:00 AM", "3:00 PM"],
-    },
     provider: {
       name: "Deepaka Joshi",
       image: "https://randomuser.me/api/portraits/men/52.jpg",
@@ -368,12 +318,6 @@ const providers = [
         pincode: "211019",
       },
     },
-    pricing: {
-      basePrice: 699,
-      serviceFee: 50,
-      taxes: 50,
-      total: 799,
-    },
     reviews: [
       {
         id: 1,
@@ -385,6 +329,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -411,10 +356,6 @@ const providers = [
     ],
     description: "RO and water purifier installation services.",
     includes: ["RO setup", "Pipe fitting", "Water testing"],
-    availableSlots: {
-      today: ["10:00 AM", "1:00 PM", "4:00 PM"],
-      tomorrow: ["9:00 AM", "10:00 AM", "2:00 PM", "5:00 PM"],
-    },
     provider: {
       name: "Naveen Kumar",
       image: "https://randomuser.me/api/portraits/men/36.jpg",
@@ -430,12 +371,6 @@ const providers = [
         pincode: "400069",
       },
     },
-    pricing: {
-      basePrice: 899,
-      serviceFee: 50,
-      taxes: 50,
-      total: 999,
-    },
     reviews: [
       {
         id: 1,
@@ -447,6 +382,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: true,
     instantBooking: false,
   },
 
@@ -474,10 +410,6 @@ const providers = [
     ],
     description: "Laptop and desktop repair by certified technicians.",
     includes: ["Hardware repair", "Software install", "Virus removal"],
-    availableSlots: {
-      today: ["9:00 AM", "12:00 PM", "3:00 PM"],
-      tomorrow: ["10:00 AM", "2:00 PM", "4:00 PM", "6:00 PM"],
-    },
     provider: {
       name: "Akash Mehta",
       image: "https://randomuser.me/api/portraits/men/15.jpg",
@@ -493,12 +425,6 @@ const providers = [
         pincode: "345001",
       },
     },
-    pricing: {
-      basePrice: 699,
-      serviceFee: 50,
-      taxes: 50,
-      total: 799,
-    },
     reviews: [
       {
         id: 1,
@@ -510,6 +436,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -537,10 +464,6 @@ const providers = [
     ],
     description: "WiFi router setup and network optimization services.",
     includes: ["Router setup", "Speed optimization", "Network security"],
-    availableSlots: {
-      today: ["9:00 AM", "10:00 AM", "1:00 PM"],
-      tomorrow: ["11:00 AM", "3:00 PM", "5:00 PM"],
-    },
     provider: {
       name: "Ravina Menon",
       image: "https://randomuser.me/api/portraits/men/44.jpg",
@@ -556,12 +479,6 @@ const providers = [
         pincode: "560038",
       },
     },
-    pricing: {
-      basePrice: 399,
-      serviceFee: 50,
-      taxes: 50,
-      total: 499,
-    },
     reviews: [
       {
         id: 1,
@@ -573,6 +490,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -599,10 +517,6 @@ const providers = [
     ],
     description: "Professional salon services at home.",
     includes: ["Haircut", "Beard styling", "Hair wash"],
-    availableSlots: {
-      today: ["10:00 AM", "1:00 PM", "5:00 PM"],
-      tomorrow: ["9:00 AM", "1:00 PM", "4:00 PM", "6:00 PM"],
-    },
     provider: {
       name: "Aditya Kapoor",
       image: "https://randomuser.me/api/portraits/men/61.jpg",
@@ -618,12 +532,6 @@ const providers = [
         pincode: "345001",
       },
     },
-    pricing: {
-      basePrice: 599,
-      serviceFee: 50,
-      taxes: 50,
-      total: 699,
-    },
     reviews: [
       {
         id: 1,
@@ -635,6 +543,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -661,10 +570,6 @@ const providers = [
     ],
     description: "Relaxing full-body spa therapy at home.",
     includes: ["Body massage", "Aromatherapy", "Head massage"],
-    availableSlots: {
-      today: ["9:00 AM", "12:00 PM", "6:00 PM"],
-      tomorrow: ["10:00 AM", "12:00 PM", "3:00 PM"],
-    },
     provider: {
       name: "Sneha Arora",
       image: "https://randomuser.me/api/portraits/women/45.jpg",
@@ -680,12 +585,6 @@ const providers = [
         pincode: "284001",
       },
     },
-    pricing: {
-      basePrice: 1399,
-      serviceFee: 50,
-      taxes: 50,
-      total: 1499,
-    },
     reviews: [
       {
         id: 1,
@@ -697,6 +596,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: true,
     instantBooking: false,
   },
 
@@ -724,10 +624,6 @@ const providers = [
     ],
     description: "Professional home painting services with premium finishes.",
     includes: ["Wall painting", "Texture work", "Color consultation"],
-    availableSlots: {
-      today: ["11:00 AM", "2:00 PM", "5:00 PM"],
-      tomorrow: ["9:00 AM", "10:00 AM", "1:00 PM", "4:00 PM"],
-    },
     provider: {
       name: "Mahi Joshi",
       image: "https://randomuser.me/api/portraits/men/58.jpg",
@@ -743,12 +639,6 @@ const providers = [
         pincode: "249001",
       },
     },
-    pricing: {
-      basePrice: 2300,
-      serviceFee: 100,
-      taxes: 100,
-      total: 2500,
-    },
     reviews: [
       {
         id: 1,
@@ -760,6 +650,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: false,
   },
 
@@ -787,10 +678,6 @@ const providers = [
     ],
     description: "Custom carpentry and furniture repair services.",
     includes: ["Furniture repair", "Shelf installation", "Wood polishing"],
-    availableSlots: {
-      today: ["10:00 AM", "1:00 PM", "4:00 PM"],
-      tomorrow: ["9:00 AM", "11:00 AM", "4:00 PM", "6:00 PM"],
-    },
     provider: {
       name: "Harish Gupta",
       image: "https://randomuser.me/api/portraits/men/73.jpg",
@@ -806,12 +693,6 @@ const providers = [
         pincode: "284003",
       },
     },
-    pricing: {
-      basePrice: 799,
-      serviceFee: 50,
-      taxes: 50,
-      total: 899,
-    },
     reviews: [
       {
         id: 1,
@@ -823,6 +704,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -850,10 +732,6 @@ const providers = [
     ],
     description: "Experienced home chefs for healthy and delicious meals.",
     includes: ["Meal preparation", "Custom menu", "Kitchen cleanup"],
-    availableSlots: {
-      today: ["9:00 AM", "12:00 PM", "3:00 PM", "6:00 PM"],
-      tomorrow: ["10:00 AM", "1:00 PM", "4:00 PM"],
-    },
     provider: {
       name: "Chef Ankit",
       image: "https://randomuser.me/api/portraits/men/20.jpg",
@@ -869,12 +747,6 @@ const providers = [
         pincode: "284003",
       },
     },
-    pricing: {
-      basePrice: 1199,
-      serviceFee: 50,
-      taxes: 50,
-      total: 1299,
-    },
     reviews: [
       {
         id: 1,
@@ -886,6 +758,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: false,
   },
 
@@ -913,10 +786,6 @@ const providers = [
     ],
     description: "Premium catering service for parties and events.",
     includes: ["Buffet setup", "Veg & non-veg menu", "Serving staff"],
-    availableSlots: {
-      today: ["10:00 AM", "2:00 PM", "6:00 PM"],
-      tomorrow: ["9:00 AM", "11:00 AM", "2:00 PM", "5:00 PM"],
-    },
     provider: {
       name: "Chef Sameer",
       image: "https://randomuser.me/api/portraits/men/34.jpg",
@@ -932,12 +801,6 @@ const providers = [
         pincode: "571313",
       },
     },
-    pricing: {
-      basePrice: 4700,
-      serviceFee: 150,
-      taxes: 149,
-      total: 4999,
-    },
     reviews: [
       {
         id: 1,
@@ -949,6 +812,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: false,
   },
   {
@@ -974,10 +838,6 @@ const providers = [
     ],
     description: "Dedicated care for elderly individuals.",
     includes: ["Personal care", "Medical assistance", " companionship"],
-    availableSlots: {
-      today: ["9:00 AM", "11:00 AM", "2:00 PM"],
-      tomorrow: ["10:00 AM", "1:00 PM", "4:00 PM", "6:00 PM"],
-    },
     provider: {
       name: "Neha Sharma",
       image: "https://randomuser.me/api/portraits/women/45.jpg",
@@ -993,12 +853,6 @@ const providers = [
         pincode: "110001",
       },
     },
-    pricing: {
-      basePrice: 2799,
-      serviceFee: 50,
-      taxes: 50,
-      total: 2999,
-    },
     reviews: [
       {
         id: 1,
@@ -1010,6 +864,7 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
+    availableNextDay: false,
     instantBooking: true,
   },
 ];

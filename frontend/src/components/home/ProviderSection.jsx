@@ -1,6 +1,7 @@
 import React from "react";
 import PrimaryBtn from "../ui/PrimaryBtn";
 import { useNavigate } from "react-router-dom";
+import { MdEventAvailable, MdSchedule, MdTrendingUp } from "react-icons/md";
 
 function ProviderSection() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function ProviderSection() {
             <div className="flex flex-col gap-1 w-full ">
               <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50/80 transition-colors duration-200  group">
                 <span className="w-8 h-8 shrink-0 rounded-full bg-blue-100 text-[#1E4ED8] flex items-center justify-center font-bold group-hover:bg-[#1E4ED8] group-hover:text-white transition-colors duration-200">
-                  ✔
+                  <MdEventAvailable className="text-base" aria-hidden="true" />
                 </span>
                 <p className="text-sm sm:text-base text-gray-300 font-medium group-hover:text-blue-900">
                   Get regular bookings
@@ -28,7 +29,7 @@ function ProviderSection() {
               </div>
               <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50/80 transition-colors duration-200  group">
                 <span className="w-8 h-8 shrink-0 rounded-full bg-blue-100 text-[#1E4ED8] flex items-center justify-center font-bold group-hover:bg-[#1E4ED8] group-hover:text-white transition-colors duration-200">
-                  ✔
+                  <MdSchedule className="text-base" aria-hidden="true" />
                 </span>
                 <p className="text-sm sm:text-base text-gray-300 font-medium group-hover:text-blue-900">
                   Work on your own schedule
@@ -36,7 +37,7 @@ function ProviderSection() {
               </div>
               <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50/80 transition-colors duration-200  group">
                 <span className="w-8 h-8 shrink-0 rounded-full bg-blue-100 text-[#1E4ED8] flex items-center justify-center font-bold group-hover:bg-[#1E4ED8] group-hover:text-white transition-colors duration-200">
-                  ✔
+                  <MdTrendingUp className="text-base" aria-hidden="true" />
                 </span>
                 <p className="text-sm sm:text-base text-gray-300 font-medium group-hover:text-blue-900">
                   Grow your income sustainably

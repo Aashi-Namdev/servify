@@ -4,9 +4,9 @@ import SecondaryBtn from "../ui/SecondaryBtn";
 import { FiMapPin } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { MdElectricBolt } from "react-icons/md";
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark, FaRegBookmark, FaStar } from "react-icons/fa";
 import { useState } from "react";
-import { FaRegBookmark } from "react-icons/fa";
+import BookingCard from "./BookingCard";
 
 export default function ServiceCard({ service }) {
   const {
@@ -20,10 +20,7 @@ export default function ServiceCard({ service }) {
     distance,
   } = service;
 
-  const handleBookNow = () => {
-    const id = Math.floor(Math.random() * 10 + 1);
-    console.log(id);
-  };
+  const [openBooking , setOpenBooking] = useState(false);
 
     const [showToast, setShowToast] = useState(false);
   
@@ -85,7 +82,8 @@ export default function ServiceCard({ service }) {
           </h3>
 
           <span className="flex items-center gap-1 text-sm font-medium text-yellow-500">
-            ⭐ <span className="text-gray-700">{rating}</span>
+            <FaStar className="text-yellow-400" aria-hidden="true" />
+            <span className="text-gray-700">{rating}</span>
           </span>
         </div>
 
@@ -126,10 +124,15 @@ export default function ServiceCard({ service }) {
             <PrimaryBtn
               btn="Book Now"
               className="w-full"
-              onclick={() => handleBookNow()}
+              onclick={() => setOpenBooking(true)}
             />
           </div>
         </div>
+        {
+          openBooking && (
+            <BookingCard key={service.id} service = {service} setOpenBooking={setOpenBooking} />
+          )
+        }
       </div>
     </div>
   );

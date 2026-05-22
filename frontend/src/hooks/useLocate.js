@@ -1,42 +1,63 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import providers from "../data/providers";
+import axios from "axios";
 
 function getDistanceInKm(lat1, lon1, lat2, lon2) {
   const R = 6371;
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
   const dLon = ((lon2 - lon1) * Math.PI) / 180;
-  const a = Math.sin(dLat / 2) ** 2 + Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLon / 2) ** 2;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) ** 2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
 export function useLocate() {
   const [status, setStatus] = useState("idle");
   const [userCoords, setUserCoords] = useState(null);
+  const [address, setAddress] = useState(null);
 
-  function detect() {
+  const detect = useCallback(() => {
     if (!navigator.geolocation) {
       setStatus("denied");
       return;
     }
     setStatus("loading");
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
         setUserCoords({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
+          lat,
+          lon,
         });
-        setStatus("success");
+
+        try {
+          const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+          const res = await axios.get(url);
+          console.log(res.data.address);
+          setAddress(res.data.address);
+          setStatus("success");
+        } catch (e) {
+          {
+            console.log(e);
+            setStatus("denied");
+          }
+        }
       },
       () => {
         setStatus("denied");
       },
     );
-  }
+  }, []);
 
-  function clearLocation() {
+  const clearLocation = useCallback(() => {
     setStatus("idle");
     setUserCoords(null);
-  }
+    setAddress(null);
+  }, []);
 
   const nearbyProviders = (providersList) => {
     if (!userCoords) return providersList;
@@ -46,10 +67,9 @@ export function useLocate() {
         ...p,
         distance: getDistanceInKm(userCoords.lat, userCoords.lon, p.lat, p.lon),
       }))
-      .filter((p) => p.distance <= 400)
+      .filter((p) => p.distance <= 400);
   };
   const nearbyProvidersList = nearbyProviders(providers);
 
-
-  return { status, detect,clearLocation,  nearbyProvidersList };
+  return { status, address, detect, clearLocation, nearbyProvidersList };
 }
