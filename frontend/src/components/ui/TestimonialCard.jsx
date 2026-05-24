@@ -1,12 +1,11 @@
-import React from "react";
 import { FiStar, FiUser } from "react-icons/fi";
 
 function TestimonialCard({ testimonial, isActive }) {
   const { name, role, content, review } = testimonial;
   return (
-    <div 
-      className={`bg-[#0F2F66] min-h-44 w-[calc(100vw_-_2rem)] sm:w-80 md:w-96 flex flex-col justify-between rounded-lg p-5 max-w-96 text-gray-300 shadow-lg shrink-0 duration-300 snap-center transition-transform ${
-        isActive ? "scale-100 sm:scale-110" : "scale-95 hover:scale-100"
+    <div
+      className={`bg-[#0F2F66] min-h-44 w-full flex flex-col justify-between rounded-lg p-5 text-gray-300 shadow-lg duration-300 transition-transform ${
+        isActive ? "scale-100 hover:scale-105" : "scale-95 hover:scale-100"
       }`}
     >
       <div className="text-sm mb-3">{content}</div>
@@ -22,9 +21,9 @@ function TestimonialCard({ testimonial, isActive }) {
         </div>
         <div className="flex items-center border-gray-300 border rounded-full px-2 py-1">
           {Array.from({ length: 5 }).map((_, index) => (
-            <FiStar 
-              key={index} 
-              className={`w-5 h-5 ${index < review ? "text-amber-400 fill-current" : "text-gray-400"}`} 
+            <FiStar
+              key={index}
+              className={`w-5 h-5 ${index < review ? "text-amber-400 fill-current" : "text-gray-400"}`}
             />
           ))}
         </div>

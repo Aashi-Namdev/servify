@@ -30,14 +30,12 @@ function Header() {
 
   return (
     <>
-  
       <div className="absolute top-0 left-0 z-30 px-6 sm:px-10 lg:px-14 py-5 w-full flex items-center justify-between">
-      
         <Link to="/" className="z-50">
           <img src={logo} alt="Logo" className="w-36 sm:w-40" />
         </Link>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ul className="flex items-center gap-8">
             {[
               { name: "Home", path: "/" },
@@ -63,7 +61,7 @@ function Header() {
             ))}
           </ul>
         </div>
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={() => {
               navigate("/auth", { state: { isFlipped: false } });
@@ -83,13 +81,19 @@ function Header() {
         </div>
 
         <button
-          className="md:hidden z-50"
+          className="lg:hidden z-50"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           {isSidebarOpen ? (
-            <FiX size={30} className="text-gray-800 hover:scale-105 transition-transform duration-300" />
+            <FiX
+              size={30}
+              className="text-gray-800 hover:scale-105 transition-transform duration-300"
+            />
           ) : (
-            <FiMenu size={30} className="text-white hover:scale-105 transition-transform duration-300" />
+            <FiMenu
+              size={30}
+              className="text-white hover:scale-105 transition-transform duration-300"
+            />
           )}
         </button>
       </div>
@@ -106,7 +110,10 @@ function Header() {
             onClick={() => setIsSidebarOpen(false)}
             className="p-2 group rounded-full hover:bg-gray-100 transition cursor-pointer"
           >
-            <FiX size={24} className="text-gray-700  group-hover:scale-105 transition-transform duration-300" />
+            <FiX
+              size={24}
+              className="text-gray-700  group-hover:scale-105 transition-transform duration-300"
+            />
           </button>
         </div>
 
@@ -123,7 +130,7 @@ function Header() {
               Login
             </div>
           </button>
-          <button 
+          <button
             onClick={() => {
               setIsSidebarOpen(false);
               navigate("/auth", { state: { isFlipped: true } });

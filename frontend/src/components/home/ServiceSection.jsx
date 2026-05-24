@@ -1,9 +1,8 @@
-import React from "react";
-import ServiceCard from "../service/ServiceCard";
-import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import services from "../../constants/services";
 import providers from "../../data/providers";
+import ServiceCard from "../service/ServiceCard";
 
 function ServiceSection() {
   const topProviders = providers.slice(0, 4);
@@ -28,12 +27,9 @@ function ServiceSection() {
         </div>
       </div>
 
-      <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 mb-10 snap-x snap-mandatory scrollbar-hide scroll-smooth px-1">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-10">
         {providersWithServiceName.map((service, index) => (
-          <div
-            key={index}
-            className="w-[82vw] min-w-[260px] max-w-sm shrink-0 snap-center sm:w-72 md:w-80"
-          >
+          <div key={index} className="w-full">
             <ServiceCard service={service} />
           </div>
         ))}

@@ -49,7 +49,7 @@ function ProviderSection() {
                   navigate("/provider");
                 }}
                 btn="Join as a Provider"
-                className="mt-5 ml-0 sm:ml-3 mb-4 bg-[#1E4ED8]"
+                className="mt-5 py-3! ml-0 sm:ml-3 mb-4 bg-[#1E4ED8]"
               />
             </div>
           </div>

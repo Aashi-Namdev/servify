@@ -1,4 +1,3 @@
-
 import React from "react";
 import WorkingCard from "../ui/WorkingCard";
 import { FiCalendar, FiSearch, FiStar, FiUser } from "react-icons/fi";
@@ -38,9 +37,7 @@ function HowItWorks() {
         </p>
       </div>
 
-  
-      <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 justify-items-center">
-        
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 justify-items-center">
         {steps.map((step, index) => (
           <WorkingCard
             key={index}
@@ -50,7 +47,6 @@ function HowItWorks() {
             step={index + 1}
           />
         ))}
-
       </div>
     </div>
   );
