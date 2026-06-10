@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import PageHero from "../components/ui/PageHero";
-import ServiceCard from "../components/service/ServiceCard";
-import providers from "../data/providers";
-import services from "../constants/services";
-import Loading from "../components/ui/Loading";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { IoChevronBack, IoChevronDown, IoChevronUp } from "react-icons/io5";
-import { FiSearch } from "react-icons/fi";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import PrimaryBtn from "../components/ui/PrimaryBtn";
-import { MdOutlineStarPurple500 } from "react-icons/md";
-import { useLocate } from "../hooks/useLocate";
-import Filters from "../components/service/Filters";
+import { FiSearch } from "react-icons/fi";
 import { RiResetRightLine } from "react-icons/ri";
+import { useLocation, useNavigate } from "react-router-dom";
+import Filters from "../components/service/Filters";
+import ServiceCard from "../components/service/ServiceCard";
+import PageHero from "../components/ui/PageHero";
+import PrimaryBtn from "../components/ui/PrimaryBtn";
+import services from "../constants/services";
+import providers from "../data/providers";
+import { useLocate } from "../hooks/useLocate";
 
 function ServicesPage() {
   const { status, detect, nearbyProvidersList, clearLocation } = useLocate();
@@ -21,10 +18,10 @@ function ServicesPage() {
   const [isCategoryExpanded, setIsCategoryExpanded] = useState(false);
   const [isServiceExpanded, setIsServiceExpanded] = useState(false);
 
-  const categories = [...new Set(services.map((service) => service.category))];
-
   const { search } = useLocation();
   const navigate = useNavigate();
+
+  const categories = [...new Set(services.map((service) => service.category))];
 
   const queryParams = new URLSearchParams(search);
   const selectedCategory = queryParams.get("category");
@@ -34,6 +31,7 @@ function ServicesPage() {
   const instantBookingEnabled = queryParams.get("instantBooking") === "true"; //because it returns string and we want boolean
   const availableTodayEnabled = queryParams.get("availableToday") === "true";
 
+  // Calculate min and max price for filters
   const maxPrice = providers.reduce(
     (acc, cv) => (acc > cv.price ? acc : cv.price),
     0,
@@ -42,44 +40,26 @@ function ServicesPage() {
     acc < cv.price ? acc : cv.price,
   );
 
+  //services in selected category
+
   const servicesInCategory = selectedCategory
     ? services.filter((service) => service.category === selectedCategory)
     : services;
 
-  const filteredServices =
-    selectedServices.length > 0
-      ? servicesInCategory.filter((service) =>
-          selectedServices.includes(service.name),
-        )
-      : servicesInCategory;
+  //with  filters like category,service, price, rating, instant booking, available today
 
-  const serviceNameById = Object.fromEntries(
-    services.map((service) => [service.id, service.name]),
-  );
+  const filteredProviders = providers.filter((provider) => {
+    if (selectedCategory && provider.category !== selectedCategory) {
+      return false;
+    }
 
-  const providersInCategory =
-    selectedServices.length > 0
-      ? providers.filter((provider) => {
-          const service = filteredServices.find(
-            (s) => s.id === provider.serviceId,
-          );
-          return selectedServices.includes(service?.name);
-        })
-      : selectedCategory
-        ? providers.filter((provider) => {
-            const service = servicesInCategory.find(
-              (s) => s.id === provider.serviceId,
-            );
-            return service?.category === selectedCategory;
-          })
-        : providers;
+    if (
+      selectedServices.length > 0 &&
+      !selectedServices.includes(provider.title)
+    ) {
+      return false;
+    }
 
-  const providersWithServiceName = providersInCategory.map((provider) => ({
-    ...provider,
-    service: serviceNameById[provider.serviceId] ?? provider.serviceId,
-  }));
-
-  const finalProviders = providersWithServiceName.filter((provider) => {
     if (instantBookingEnabled && provider.instantBooking !== true) {
       return false;
     }
@@ -95,9 +75,11 @@ function ServicesPage() {
     return true;
   });
 
+  //with location filters
+
   const displayedProviders =
     status === "success"
-      ? finalProviders
+      ? filteredProviders
           .map((provider) => {
             const nearby = nearbyProvidersList.find(
               (p) => p.id === provider.id,
@@ -105,13 +87,8 @@ function ServicesPage() {
             return nearby ? { ...provider, distance: nearby.distance } : null;
           })
           .filter(Boolean)
-          .sort((a, b) => {
-            if (a.distance !== undefined && b.distance !== undefined) {
-              return a.distance - b.distance;
-            }
-            return 0;
-          })
-      : finalProviders;
+          .sort((a, b) => a.distance - b.distance)
+      : filteredProviders;
 
   return (
     <div>
@@ -149,6 +126,7 @@ function ServicesPage() {
 
         {/* main content */}
         <div className="flex-1  py-8 px-8  bg-gray-50  scrollbar-hide">
+          {/* search and results header */}
           <div className="mb-8 ">
             <form onSubmit={handleSubmit((data) => console.log(data))}>
               <div className="max-w-lg mb-5 text-gray-700 py-3   relative">
@@ -173,6 +151,8 @@ function ServicesPage() {
               Check out our available services{" "}
             </p>
           </div>
+
+          {/* if no provider found */}
           {displayedProviders.length === 0 && (
             <div className="flex flex-col bg-white rounded-2xl py-20 items-center justify-center gap-4 mt-10">
               <img
@@ -199,6 +179,8 @@ function ServicesPage() {
               </div>
             </div>
           )}
+
+          {/* providers grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-3 my-3 ">
             {displayedProviders
               .filter((provider) => provider.status === "approved")

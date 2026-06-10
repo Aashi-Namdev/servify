@@ -38,6 +38,7 @@ function AddressCard({ setAddressOpen }) {
             <HiOutlineXMark className="" size={20} />
           </div>
           <h1 className="text-lg relative font-bold mb-3">Add New Address</h1>
+          {/*button to clear address*/}
           {(status === "success" || status === "denied") && (
             <button
               onClick={() => {
@@ -55,6 +56,7 @@ function AddressCard({ setAddressOpen }) {
               <span>Clear</span>
             </button>
           )}
+          {/* auto detect location button */}
           <button
             onClick={() => {
               detect();
@@ -76,6 +78,7 @@ function AddressCard({ setAddressOpen }) {
           <h2 className="text-base text-center text-blue-600 font-semibold my-2">
             OR
           </h2>
+          {/*manual address fill form */}
           <div>
             <div className="relative">
               <label
@@ -174,6 +177,7 @@ function AddressCard({ setAddressOpen }) {
                 )}
               </div>
             </div>
+            {/*submit address button */}
             <button
               onClick={handleSubmit((data) => {
                 localStorage.setItem("userAddress", JSON.stringify(data));

@@ -19,7 +19,6 @@ const providers = [
     galleryImages: [
       "https://images.unsplash.com/photo-1627905646269-7f034dcc5738?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=600&auto=format&fit=crop&q=80",
-
     ],
     description:
       "Professional home cleaning services by verified experts near you.",
@@ -50,19 +49,20 @@ const providers = [
         user: "Amit",
         rating: 5,
         date: "12 May 2026",
-        comment: "Excellent cleaning service! My home has never been this spotless. Highly recommend Raj and CleanPro Services.",
+        comment:
+          "Excellent cleaning service! My home has never been this spotless. Highly recommend Raj and CleanPro Services.",
       },
       {
         id: 2,
         user: "Sneha",
         rating: 4,
         date: "15 May 2026",
-        comment: "Good service overall. The team was professional and did a great job. The only reason I'm giving 4 stars instead of 5 is because they were a bit late to arrive, but the quality of cleaning made up for it.",
-      }
+        comment:
+          "Good service overall. The team was professional and did a great job. The only reason I'm giving 4 stars instead of 5 is because they were a bit late to arrive, but the quality of cleaning made up for it.",
+      },
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: false,
   },
 
@@ -110,12 +110,12 @@ const providers = [
         user: "Priya",
         rating: 5,
         date: "10 May 2026",
-        comment: "Amazing deep cleaning service. Highly recommended! But the price is a bit high.",
+        comment:
+          "Amazing deep cleaning service. Highly recommended! But the price is a bit high.",
       },
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -168,7 +168,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -190,7 +189,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1626806819282-2c1dc01a5e0c?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-
       "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1581092919535-1b44e5f6d6b2?w=800&auto=format&fit=crop&q=80",
     ],
@@ -222,7 +220,6 @@ const providers = [
     ],
     availableToday: false,
     availableTomorrow: true,
-    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -276,7 +273,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -329,7 +325,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -382,7 +377,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: true,
     instantBooking: false,
   },
 
@@ -404,7 +398,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=80",
     ],
@@ -436,7 +429,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -458,7 +450,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop&q=80",
     ],
@@ -490,7 +481,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -543,7 +533,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: true,
   },
 
@@ -596,14 +585,13 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: true,
     instantBooking: false,
   },
 
   {
     id: "p12",
     title: "Wall Painting",
-    category: "Home improvement",
+    category: "Home Improvement",
     providerName: "ColorCraft Painters",
     serviceId: "painting",
     rating: 4.6,
@@ -618,7 +606,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1508868407248-ac1c9e6e5ba0?w=800&auto=format&fit=crop&q=80",
     ],
@@ -650,14 +637,13 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: false,
   },
 
   {
     id: "p13",
     title: "Carpentry Work",
-    category: "Home improvement",
+    category: "Home Improvement",
     providerName: "WoodFix Experts",
     serviceId: "carpentry",
     rating: 4.7,
@@ -672,7 +658,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1505798577917-a65157d3320a?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-     
       "https://images.unsplash.com/photo-1503389152951-9f343605f61c?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?w=800&auto=format&fit=crop&q=80",
     ],
@@ -704,7 +689,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: true,
     instantBooking: true,
   },
 
@@ -726,7 +710,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1498579809087-ef1e558fd1da?w=800&auto=format&fit=crop&q=80",
     ],
@@ -758,7 +741,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: false,
   },
 
@@ -780,7 +762,6 @@ const providers = [
     coverImage:
       "https://images.unsplash.com/photo-1555244162-803834f70033?w=600&auto=format&fit=crop&q=80",
     galleryImages: [
-
       "https://images.unsplash.com/photo-1521305916504-4a1121188589?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1478144592103-25e218a04891?w=800&auto=format&fit=crop&q=80",
     ],
@@ -812,7 +793,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: false,
   },
   {
@@ -864,7 +844,6 @@ const providers = [
     ],
     availableToday: true,
     availableTomorrow: true,
-    availableNextDay: false,
     instantBooking: true,
   },
 ];

@@ -1,9 +1,14 @@
-import React from "react";
-import { FiMapPin } from "react-icons/fi";
 import { useState } from "react";
-import AddressCard from "./AddressCard";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from "react-hook-form";
+import { FiMapPin } from "react-icons/fi";
 import { HiOutlineXMark } from "react-icons/hi2";
+import AddressCard from "./AddressCard";
+import { FiCalendar } from "react-icons/fi";
+import { useEffect } from "react";
 
+//  get saved address from localStorage
 function getSavedAddress() {
   try {
     return JSON.parse(localStorage.getItem("userAddress")) || {};
@@ -12,9 +17,21 @@ function getSavedAddress() {
   }
 }
 
-function BookingCard({ service = {}, setOpenBooking }) {
-  const { providerName, service: serviceName, title, distance, location } =
-    service;
+// Set date limits
+const today = new Date();
+const maxDate = new Date(today);
+maxDate.setDate(today.getDate() + 6); // Set max date to 6 days from today
+
+function BookingCard({ service, setOpenBooking }) {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const {
+    register,
+    formState: { errors },
+    setValue,
+  } = useForm();
+
+  const { providerName, title, distance, location } = service;
 
   const [addressOpen, setAddressOpen] = useState(false);
   const savedAddress = getSavedAddress();
@@ -27,6 +44,10 @@ function BookingCard({ service = {}, setOpenBooking }) {
   ]
     .filter(Boolean)
     .join(", ");
+  // Update the "where" field whenever the address changes
+  useEffect(() => {
+    setValue("where", addressText || "No address added");
+  }, [addressText, setValue]);
 
   return (
     <div>
@@ -39,9 +60,7 @@ function BookingCard({ service = {}, setOpenBooking }) {
             <HiOutlineXMark className="" size={20} />
           </div>
           <div className="">
-            <h1 className=" text-2xl font-bold mb-1">
-              {serviceName || title}
-            </h1>
+            <h1 className=" text-2xl font-bold mb-1">{title}</h1>
 
             <h2 className="mb-5 flex items-center text-base  font-semibold">
               <span className="font-semibold text-blue-600">
@@ -60,22 +79,41 @@ function BookingCard({ service = {}, setOpenBooking }) {
             </h2>
           </div>
 
-          <div>
-            <h1 className="text-base font-semibold mb-2">
-              Where do you need the service?
-            </h1>
-            <h2 className="text-[13px] border px-3 py-1 rounded-lg text-gray-700 border-gray-500">
-              {addressText || "No saved address yet"}
-            </h2>
-
-            <div>
-              <button
-                type="button"
-                onClick={() => setAddressOpen(true)}
-                className="ml-2 cursor-pointer bg-transparent p-0 text-[13px] font-semibold text-blue-600 hover:underline"
+          <div className="space-y-5">
+            {/* Address Section  */}
+            <div className="space-y-2">
+              <label
+                htmlFor="where"
+                className="text-base text-gray-800 font-semibold "
               >
-                Change Address
-              </button>
+                Where do you need the service?
+              </label>
+              <div className="relative">
+                <input
+                  {...register("where", { required: "Address is required" })}
+                  id="where"
+                  type="text"
+                  defaultValue={addressText || "No address added"}
+                  readOnly
+                  className="text-[13px] border px-3 mt-1 py-2 rounded-lg outline-none w-full text-gray-800 bg-gray-50 border-gray-300"
+                />
+              </div>
+              {errors.where && (
+                <p className="text-red-600 text-sm -mt-1">
+                  {errors.where.message}
+                </p>
+              )}
+
+              <div className="flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => setAddressOpen(true)}
+                  className="cursor-pointer bg-transparent p-0 text-[13px] font-semibold text-blue-600 hover:underline"
+                >
+                  {addressText ? "Change Address" : "Add Address"}
+                </button>
+              </div>
+
               {addressOpen && (
                 <AddressCard
                   addressOpen={addressOpen}
@@ -83,6 +121,39 @@ function BookingCard({ service = {}, setOpenBooking }) {
                 />
               )}
             </div>
+            {/* Date Picker Section * */}
+            <div className="">
+              <label
+                htmlFor="date"
+                className="text-base text-gray-800 font-semibold"
+              >
+                When do you need the service?
+              </label>
+              <div className="relative w-full flex items-center mt-1 ">
+                <FiCalendar
+                  className="absolute z-10  right-3 text-gray-400"
+                  size={16}
+                />
+                <DatePicker
+                  {...register("date", { required: "Date is required" })}
+                  id="date"
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  minDate={today}
+                  maxDate={maxDate}
+                  placeholderText="Select date"
+                  wrapperClassName="w-full"
+                  className="text-[13px]  border px-3 py-2 rounded-lg outline-none w-full text-gray-800 bg-gray-50 border-gray-300"
+                />
+              </div>
+              {errors.date && (
+                <p className="text-red-600 text-sm -mt-1">
+                  {errors.date.message}
+                </p>
+              )}
+            </div>
+            {/*Slot selection section  */}
+            <div></div>
           </div>
         </div>
       </div>

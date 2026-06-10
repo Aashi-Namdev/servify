@@ -55,6 +55,7 @@ function Filters(props) {
           navbarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
+        {/* Location Filter */}
         <div className="flex relative flex-col px-4 py-2 border-b border-gray-100">
           <h2 className="text-sm  font-bold mb-2 uppercase text-gray-800">
             Location
@@ -85,6 +86,8 @@ function Filters(props) {
             {status === "success" && "Nearby Services"}
           </button>
         </div>
+
+        {/* Price Filter */}
         <div className="flex flex-col px-4 py-4 border-b border-gray-100">
           <h2 className="text-sm font-bold mb-2 uppercase text-gray-800">
             Price
@@ -110,6 +113,7 @@ function Filters(props) {
             Availability
           </h2>
           <ul className="space-y-2">
+            {/* Instant Booking Filter */}
             <div
               onClick={() => {
                 const params = new URLSearchParams(search);
@@ -138,6 +142,8 @@ function Filters(props) {
                 <span>Instant Booking</span>
               </label>
             </div>
+
+            {/* Available Today Filter */}
 
             <div
               onClick={() => {
@@ -170,6 +176,7 @@ function Filters(props) {
           </ul>
         </div>
         <div className="flex flex-col px-4 py-4">
+          {/* Ratings Filter */}
           <h2 className="text-sm font-bold mb-2 uppercase text-gray-800">
             Ratings
           </h2>
@@ -237,6 +244,8 @@ function Filters(props) {
           </ul>
         </div>
 
+        {/* Category Filter */}
+
         <div
           className="flex items-center justify-between px-4 py-3 border-t border-gray-100 cursor-pointer"
           onClick={() => setIsCategoryExpanded(!isCategoryExpanded)}
@@ -295,6 +304,8 @@ function Filters(props) {
             })}
           </div>
         )}
+
+        {/* Service Filter */}
 
         <div
           className="flex items-center justify-between px-4 py-3 border-t border-gray-100 cursor-pointer"

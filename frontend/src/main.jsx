@@ -15,6 +15,7 @@ import ProviderPage from "./pages/ProviderPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
 import ViewDetails from "./pages/ViewDetails.jsx";
+import { Toaster } from "sonner";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,5 +32,8 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
+  <>
+    <RouterProvider router={router} />
+    <Toaster richColors position="top-right" />
+  </>,
 );
